@@ -2,11 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import SearchBar from './searchBar';
 import { Suspense } from 'react/cjs/react.production.min';
+import { useState } from 'react';
 
 function App() {
   const { search } = window.location;
   const query = new URLSearchParams(search).get('s');
-  const filteredUsers = filterUsers(users, query);
+  const [searchQuery, setSearchQuery] = useState(query || '');
+  const filteredUsers = filterUsers(users, searchQuery);
 
   return (
     <div className="App">
@@ -14,7 +16,10 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         
       <div>
-          <SearchBar />
+          <SearchBar 
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
           <ul>
             {users.map((user) => {
               <li key={user.key}>{user.firstName + user.lastName}</li>
