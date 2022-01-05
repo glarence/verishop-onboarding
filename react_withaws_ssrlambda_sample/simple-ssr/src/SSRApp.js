@@ -25,6 +25,7 @@ const SSRApp = ({ data }) => {
 
       <div>
         <h1>Hello Universe!</h1>
+        <SearchBar />
       </div>
   );
 };

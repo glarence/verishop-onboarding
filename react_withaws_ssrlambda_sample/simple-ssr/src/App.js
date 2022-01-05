@@ -43,6 +43,7 @@ const App = ({ isSSR, ssrData }) => {
 
       <div>
         <h1>Hello World!</h1>
+        <SearchBar />
       </div>
     );
   }
