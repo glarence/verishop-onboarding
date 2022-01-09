@@ -28,12 +28,11 @@ function App() {
             setSearchQuery={setSearchQuery}
           />
           <ul>
-            {filteredUsers.map((user) => {
-
-              console.log("Filtered username: " + user.userName + "\n");
-
-              <li key={user.id}>{user.userName}</li>
-            })}
+            { 
+              filteredUsers.map(user => (
+                <li key={user.id}>{user.userName}</li>
+              ))
+            }
           </ul>
       </div>
 
