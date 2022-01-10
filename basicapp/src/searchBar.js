@@ -18,7 +18,9 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
     return (
         <form action="/" method="get" onSubmit={handleSubmit}>
             <label htmlFor="header-search">
-                <span className="visually-hidden">Search for users</span>
+                <span className="visually-hidden">
+                    Search for users
+                </span>
             </label>
             <input 
                 type="text"
@@ -26,7 +28,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
                 placeholder="Search users"
                 name="s"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}>
+                onInput={e => setSearchQuery(e.target.value)}>
             </input>
             <button type="submit">Search</button>
         </form>
