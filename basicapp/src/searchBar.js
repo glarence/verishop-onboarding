@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
     //return <div>Hello World!</div>
@@ -11,8 +12,10 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
 
     //  autoComplete="off" onSubmit={onSubmit}
 
-    const handleSubmit = (e) => {
-        
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        return UserProfile();
     }
 
     return (

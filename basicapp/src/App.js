@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import SearchBar from './searchBar';
+import SearchBar from './SearchBar';
+import UserList from './UserList';
 import { useState } from 'react';
 import { Suspense } from 'react/cjs/react.production.min';
 import { BrowserRouter as Router } from "react-router-dom";
+import UserProfile from './UserProfile';
 
 const users = [
   { id: '0', firstName: 'James', lastName: 'Sun', userName: 'jamessun', emailAddress: 'jamessun@gmail' }, 
@@ -32,28 +34,29 @@ function App() {
   const [searchQuery, setSearchQuery] = useState(query || '');
   const filteredUsers = filterUsernames(users, searchQuery);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-      <div>
-          <SearchBar 
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          />
-          <ul>
-            { 
-              filteredUsers.map(user => (
-                <li key={user.id}>{user.userName}</li>
-              ))
-            }
-          </ul>
-      </div>
+  if(!query){
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          
+        <div>
+            <SearchBar 
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+            <h4>List of Users</h4>
+            <hr />
+            <UserList
+              users={filteredUsers}
+            />
 
-      </header>
-    </div>
-  );
+        </div>
+  
+        </header>
+      </div>
+    );
+  }
 }
 
 function HomePage(props){
@@ -67,7 +70,7 @@ function HomePage(props){
   );
 }
 
-function UserProfile(props){
+/*function UserProfile(props){
   return(
     <div className='UserProfile'>
       <div className='Name'>
@@ -81,6 +84,6 @@ function UserProfile(props){
       </div>
   </div>
   );
-}
+}*/
 
 export default App;
