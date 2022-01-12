@@ -10,10 +10,6 @@ import './App.css';
 const SSRApp = ({ data }) => {
   const [result, setResult] = useState({ loading: false, products: data });
   return (
-    /*<div>
-        <ProductList result={result} />
-      </div>*/
-
       <div className="App">
       <header className="App-header">
       <div>
@@ -22,11 +18,6 @@ const SSRApp = ({ data }) => {
 
       </header>
       </div>
-
-      /*<div>
-        <h1>Hello World!</h1>
-        <SearchBar />
-      </div>*/
   );
 };
 

@@ -28,23 +28,13 @@ const App = ({ isSSR, ssrData }) => {
     return <div>Error {err}</div>;
   } else {
     return (
-      /*<div>
-        <ProductList result={result} />
-      </div>*/
-
       <div className="App">
       <header className="App-header">
       <div>
           <SearchBar />
       </div>
-
       </header>
       </div>
-
-      /*<div>
-        <h1>Hello World!</h1>
-        <SearchBar />
-      </div>*/
     );
   }
 };
