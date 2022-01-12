@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import SearchBar from './searchBar';
+import SearchBar from './SearchBar';
 import { useState } from 'react';
 import UserList from './UserList';
 import UserProfile from './UserProfile';
