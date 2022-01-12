@@ -14,19 +14,19 @@ const SSRApp = ({ data }) => {
         <ProductList result={result} />
       </div>*/
 
-      /*<div className="App">
+      <div className="App">
       <header className="App-header">
       <div>
           <SearchBar />
       </div>
 
       </header>
-      </div>*/
-
-      <div>
-        <h1>Hello Universe!</h1>
-        <SearchBar />
       </div>
+
+      /*<div>
+        <h1>Hello World!</h1>
+        <SearchBar />
+      </div>*/
   );
 };
 

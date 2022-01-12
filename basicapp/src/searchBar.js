@@ -11,8 +11,11 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
 
     //  autoComplete="off" onSubmit={onSubmit}
 
-    const handleSubmit = (e) => {
-        
+    const handleSubmit = e => {
+        e.preventDefault();
+        if(searchQuery){
+            return UserProfile();
+        }
     }
 
     return (
