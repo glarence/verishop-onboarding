@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import SearchBar from './searchBar';
 import { useState } from 'react';
+import UserList from './UserList';
+import UserProfile from './UserProfile';
 import { Suspense } from 'react/cjs/react.production.min';
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -32,55 +34,32 @@ function App() {
   const [searchQuery, setSearchQuery] = useState(query || '');
   const filteredUsers = filterUsernames(users, searchQuery);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-      <div>
-          <SearchBar 
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          />
-          <ul>
-            { 
-              filteredUsers.map(user => (
-                <li key={user.id}>{user.userName}</li>
-              ))
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <div>
+            <SearchBar 
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+            <h4>List of Users</h4>
+            <hr />
+            <UserList
+              users={filteredUsers}
+            />
+            {filteredUsers.length > 0 &&
+              <UserProfile
+              username={filteredUsers[0].userName}
+              firstname={filteredUsers[0].firstName}
+              lastname={filteredUsers[0].lastName}
+              emailaddress={filteredUsers[0].emailAddress}
+              />
             }
-          </ul>
+          </div>
+        </header>
       </div>
-
-      </header>
-    </div>
-  );
-}
-
-function HomePage(props){
-  return(
-    <div className='SearchTitle'>
-      <h1>Search User</h1>
-      <div className='SearchBar'>
-          
-      </div>
-    </div>
-  );
-}
-
-function UserProfile(props){
-  return(
-    <div className='UserProfile'>
-      <div className='Name'>
-        <h1>Name: First Last</h1>
-      </div>
-      <div className='Username'>
-        <h2>Username: username</h2>
-      </div>
-      <div className='Email-address'>
-        <h2>Email: email address</h2>
-      </div>
-  </div>
-  );
+    );
 }
 
 export default App;

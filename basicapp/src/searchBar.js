@@ -1,18 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
-    //return <div>Hello World!</div>
-
-    /*const navigate = useNavigate();
-    const onSubmit = e => {
-        e.preventDefault()
-        navigate.push(`?s=${searchQuery}`)
-    };*/
-
-    //  autoComplete="off" onSubmit={onSubmit}
-
-    const handleSubmit = (e) => {
-        
+    const handleSubmit = e => {
+        e.preventDefault();
     }
 
     return (
