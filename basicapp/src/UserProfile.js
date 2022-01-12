@@ -1,7 +1,5 @@
 //Javascript object destructuring for users
-//const UserProfile = ({user}) => {
 const UserProfile = (props) => {
-    //if(props.userSearched){
         return(
             <div className='UserProfile'>
               <div className='Username'>
@@ -11,7 +9,6 @@ const UserProfile = (props) => {
               </div>
           </div>
           );
-    //}
 }
 
 export default UserProfile;

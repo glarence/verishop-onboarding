@@ -34,13 +34,11 @@ function App() {
   const [searchQuery, setSearchQuery] = useState(query || '');
   const filteredUsers = filterUsernames(users, searchQuery);
 
-  //if(!query){
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        <div>
+          <div>
             <SearchBar 
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
@@ -50,16 +48,18 @@ function App() {
             <UserList
               users={filteredUsers}
             />
-            <UserProfile
+            {filteredUsers.length > 0 &&
+              <UserProfile
               username={filteredUsers[0].userName}
               firstname={filteredUsers[0].firstName}
               lastname={filteredUsers[0].lastName}
               emailaddress={filteredUsers[0].emailAddress}
-            />
-        </div>
+              />
+            }
+          </div>
+        </header>
       </div>
     );
-  //}
 }
 
 export default App;
