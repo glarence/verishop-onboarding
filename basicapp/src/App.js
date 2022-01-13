@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import SearchBar from './SearchBar';
+import Combobox from "react-widgets/Combobox";
 import UserList from './UserList';
 import { useState } from 'react';
 import { Suspense } from 'react/cjs/react.production.min';
@@ -29,19 +30,49 @@ const filterUsernames = (users, query) => {
 };
 
 function App() {
-  const { search } = window.location;
-  const query = new URLSearchParams(search).get('s');
-  const [searchQuery, setSearchQuery] = useState(query || '');
-  const filteredUsers = filterUsernames(users, searchQuery);
+  //const { search } = window.location;
+  //const query = new URLSearchParams(search).get('s');
+  //const [searchQuery, setSearchQuery] = useState(query || '');
+  //const filteredUsers = filterUsernames(users, searchQuery);
 
-  if(!query){
-    return (
+  const [query, setQuery] = useState('');
+  const [selectedUser, setSelectedUser] = useState('');
+
+  return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           
         <div>
-            <SearchBar 
+            <Combobox hideCaret
+              filter='contains'
+              dataKey='id'
+              textField='userName'
+              value={query}
+              onChange={query => setQuery(query)}
+              onSelect={SelectUser}
+              data={ users }
+            />
+        </div>
+  
+        </header>
+      </div>
+    );
+}
+
+function SelectUser() {
+  alert('Selected user: ');
+
+  //Display selected user in UserProfile
+}
+
+// function ChangeUser(query) {
+//   if(query)
+//     alert('Changed user');
+// }
+
+/*
+<SearchBar 
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
             />
@@ -50,40 +81,6 @@ function App() {
             <UserList
               users={filteredUsers}
             />
-
-        </div>
-  
-        </header>
-      </div>
-    );
-  }
-}
-
-function HomePage(props){
-  return(
-    <div className='SearchTitle'>
-      <h1>Search User</h1>
-      <div className='SearchBar'>
-          
-      </div>
-    </div>
-  );
-}
-
-/*function UserProfile(props){
-  return(
-    <div className='UserProfile'>
-      <div className='Name'>
-        <h1>Name: First Last</h1>
-      </div>
-      <div className='Username'>
-        <h2>Username: username</h2>
-      </div>
-      <div className='Email-address'>
-        <h2>Email: email address</h2>
-      </div>
-  </div>
-  );
-}*/
+*/
 
 export default App;
