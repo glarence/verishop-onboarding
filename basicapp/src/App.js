@@ -38,6 +38,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [selectedUser, setSelectedUser] = useState('');
 
+  let selectAlert = () => alert('selected');
+
   return (
       <div className="App">
         <header className="App-header">
@@ -50,7 +52,11 @@ function App() {
               textField='userName'
               value={query}
               onChange={query => setQuery(query)}
-              onSelect={SelectUser}
+              //onSelect={alert('hi there ')}
+              //onSelect={() => {alert('hi there ');}}
+              //onSelect={(query) => { alert('hi there ' + query.userName);}}
+              onSelect={SelectFunction}
+              //onSelect={selectAlert}
               data={ users }
             />
         </div>
@@ -60,8 +66,17 @@ function App() {
     );
 }
 
-function SelectUser() {
-  alert('Selected user: ');
+//let SelectFunction = function(query) { alert('hi there ' + query.userName);}
+//let SelectFunction = function() { alert('hi there ');}
+let SelectFunction = () => { alert('hi there ');}
+
+//function SelectUser(query){
+let selectUser = () => {
+  alert('hi there ');
+}
+function SelectUser(){
+  alert('hello world');
+  //alert('Selected user: ' + query.userName);
 
   //Display selected user in UserProfile
 }
