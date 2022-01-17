@@ -1,8 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
     const handleSubmit = e => {
         e.preventDefault();
+
+        return UserProfile();
     }
 
     return (
