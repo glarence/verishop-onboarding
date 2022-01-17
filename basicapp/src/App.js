@@ -4,6 +4,8 @@ import SearchBar from './SearchBar';
 import Combobox from "react-widgets/Combobox";
 import UserList from './UserList';
 import { useState } from 'react';
+import UserList from './UserList';
+import UserProfile from './UserProfile';
 import { Suspense } from 'react/cjs/react.production.min';
 import { BrowserRouter as Router } from "react-router-dom";
 import UserProfile from './UserProfile';
