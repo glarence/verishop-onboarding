@@ -1,14 +1,13 @@
 //Javascript object destructuring for users
-const UserProfile = (props) => {
-        return(
-            <div className='UserProfile'>
-              <div className='Username'>
-                <h5>Username: {props.username}</h5>
-                <h5>Name: {props.firstname + " " + props.lastname}</h5>
-                <h5>Email: {props.emailaddress}</h5>
-              </div>
+//const UserProfile = ({user}) => {
+const UserProfile = () => {
+    return(
+        <div className='UserProfile'>
+          <div className='Username'>
+            <h2>Username: username</h2>
           </div>
-          );
+      </div>
+      );
 }
 
 export default UserProfile;
