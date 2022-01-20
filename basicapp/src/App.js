@@ -7,10 +7,9 @@ import UserList from './UserList';
 import UserProfile from './UserProfile';
 import { Suspense } from 'react/cjs/react.production.min';
 import { BrowserRouter as Router } from "react-router-dom";
-//import ApolloClient, { gql } from 'apollo-boost';
 import { useQuery, gql } from "@apollo/client";
 
-const EXCHANGE_RATES = gql`
+/*const EXCHANGE_RATES = gql`
   query GetExchangeRates {
     rates(currency: "USD") {
       currency
@@ -32,6 +31,33 @@ function ExchangeRates() {
       </p>
     </div>
   ));
+}*/
+
+const USERS = gql`
+  query GetUsers {
+    users {
+      data {
+        id
+        username
+        email
+      }
+    }
+  }
+`;
+
+function Users() {
+  const { loading, error, data } = useQuery(USERS);
+
+  if (loading){
+    console.log("Loading API call!");
+    return <p>Loading...</p>;
+  }
+  if (error){
+    console.log("Error with API call?");
+    return <p>Error :(</p>;
+  }
+
+  return data.users;
 }
 
 const users = [
@@ -55,38 +81,27 @@ const filterUsernames = (users, query) => {
   });
 };
 
-function App() {
+/*function App() {
   return (
     <div>
       <h2>My first Apollo app 🚀</h2>
       <ExchangeRates />
     </div>
   );
-}  
+}*/
 
-/*function App() {
+function App() {
   //const { search } = window.location;
   //const query = new URLSearchParams(search).get('s');
   //const [searchQuery, setSearchQuery] = useState(query || '');
   //const filteredUsers = filterUsernames(users, searchQuery);
 
-  fetch("https://graphqlzero.almansi.me/api", {
-  "method": "POST",
-  "headers": { "content-type": "application/json" },
-  "body": JSON.stringify({
-    query: `{
-      user(id: 1) {
-        id
-        name
-      }
-    }`
-  })
-}).then(res => res.json()).then(console.log)
-
   const [query, setQuery] = useState('');
   const [selectedUser, setSelectedUser] = useState('');
 
   let selectAlert = () => alert('selected');
+
+  console.log(Users.length);
 
   return (
       <div className="App">
@@ -112,7 +127,7 @@ function App() {
         </header>
       </div>
     );
-}*/
+}
 
 //let SelectFunction = function(query) { alert('hi there ' + query.userName);}
 //let SelectFunction = function() { alert('hi there ');}

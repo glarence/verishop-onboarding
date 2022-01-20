@@ -7,11 +7,24 @@ import {
   ApolloClient, InMemoryCache, ApolloProvider, gql } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  //uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  uri: 'https://graphqlzero.almansi.me/api',
   cache: new InMemoryCache()
 });
 
-client
+client.query({ query: gql`
+  {
+    users {
+      data {
+        id
+        username
+        email
+      }
+    }
+  }
+`}).then(console.log);
+
+/*client
   .query({
     query: gql`
       query GetRates {
@@ -21,7 +34,7 @@ client
       }
     `
   })
-  .then(result => console.log(result));
+  .then(result => console.log(result));*/
 
   ReactDOM.render(
     <React.StrictMode>
