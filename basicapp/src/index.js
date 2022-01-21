@@ -12,17 +12,17 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-client.query({ query: gql`
-  {
-    users {
-      data {
-        id
-        username
-        email
-      }
-    }
-  }
-`}).then(console.log);
+// client.query({ query: gql`
+//   {
+//     users {
+//       data {
+//         id
+//         username
+//         email
+//       }
+//     }
+//   }
+// `}).then(console.log);
 
 /*client
   .query({

@@ -33,7 +33,30 @@ function ExchangeRates() {
   ));
 }*/
 
-const USERS = gql`
+const GET_USER = gql`
+  query GetUser {
+    user(id: 1){
+      id
+      username
+      email
+    }
+  }
+`;
+
+//Test user id 1
+function GetUser() {
+  const { loading, error, data } = useQuery(GET_USER);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return (
+    <div>
+      { data.user.username }
+    </div>);
+}
+
+const GET_USERS = gql`
   query GetUsers {
     users {
       data {
@@ -46,18 +69,25 @@ const USERS = gql`
 `;
 
 function Users() {
-  const { loading, error, data } = useQuery(USERS);
+  const { loading, error, data } = useQuery(GET_USERS);
 
   if (loading){
     console.log("Loading API call!");
-    return <p>Loading...</p>;
+    //return <p>Loading...</p>;
   }
   if (error){
     console.log("Error with API call?");
-    return <p>Error :(</p>;
+    //return <p>Error :(</p>;
   }
 
-  return data.users;
+  console.log(data)
+  //console.log(data.users)
+  //console.log(data.users.data)
+
+  //return data;
+  //return data.users;
+  //return data.users.data;
+  //return(<div>Users</div>); 
 }
 
 const users = [
@@ -67,7 +97,7 @@ const users = [
   { id: '3', firstName: 'Allie', lastName: 'Scott', userName: 'alliescott', emailAddress: 'alliescott@yahoo.com'},
 ];
 
-const filterUsernames = (users, query) => {
+/*const filterUsernames = (users, query) => {
   if(!query){
     console.log("invalid query, won't filter");
     return users;
@@ -79,7 +109,7 @@ const filterUsernames = (users, query) => {
     const username = user.userName.toLowerCase();
     return username.includes(query);
   });
-};
+};*/
 
 /*function App() {
   return (
@@ -101,7 +131,8 @@ function App() {
 
   let selectAlert = () => alert('selected');
 
-  console.log(Users.length);
+  //let fetchedUsers = Users();
+  //console.log(fetchedUsers.length);
 
   return (
       <div className="App">
@@ -121,7 +152,14 @@ function App() {
               onSelect={SelectFunction}
               //onSelect={selectAlert}
               data={ users }
+              //data={ Users }
+              //data={ fetchedUsers }
             />
+
+            {/* <GetUser/> */}
+
+            {/* <Users/> */}
+
         </div>
   
         </header>
