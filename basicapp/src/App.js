@@ -39,10 +39,9 @@ function Users( query, setQuery) {
 
   //When loading is false and there is no error, the query has completed. 
   if (!loading && !error && data){
-    return (<Combobox hideCaret
+    return (<Combobox
               filter='contains'
               dataKey='id'
-              //textField='userName'
               textField='username'
               value={query}
               onChange={query => setQuery(query)}
@@ -51,22 +50,19 @@ function Users( query, setQuery) {
               //onSelect={(query) => { alert('hi there ' + query.userName);}}
               onSelect={SelectFunction}
               //onSelect={selectAlert}
-              //data={ users }
               data={ data.users.data }
-              //data={ Users }
-              //data={ fetchedUsers }
             />);
   } else {
     return <p>Could not fetch users!</p>
   }
 }
 
-const users = [
+/*const users = [
   { id: '0', firstName: 'James', lastName: 'Sun', userName: 'jamessun', emailAddress: 'jamessun@gmail' }, 
   { id: '1', firstName: 'Michael', lastName: 'Enferadi', userName: 'michaelenferadi', emailAddress: 'michaelenferadi@gmail' }, 
   { id: '2', firstName: 'Crystal', lastName: 'Yang', userName: 'crystalyang', emailAddress: 'crystalyang@aol.com'}, 
   { id: '3', firstName: 'Allie', lastName: 'Scott', userName: 'alliescott', emailAddress: 'alliescott@yahoo.com'},
-];
+];*/
 
 /*const filterUsernames = (users, query) => {
   if(!query){
