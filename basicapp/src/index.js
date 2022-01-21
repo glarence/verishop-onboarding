@@ -12,30 +12,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-// client.query({ query: gql`
-//   {
-//     users {
-//       data {
-//         id
-//         username
-//         email
-//       }
-//     }
-//   }
-// `}).then(console.log);
-
-/*client
-  .query({
-    query: gql`
-      query GetRates {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));*/
-
   ReactDOM.render(
     <React.StrictMode>
     <ApolloProvider client={client}>

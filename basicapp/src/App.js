@@ -9,53 +9,6 @@ import { Suspense } from 'react/cjs/react.production.min';
 import { BrowserRouter as Router } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
-/*const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
-    }
-  }
-`;
-
-function ExchangeRates() {
-  const { loading, error, data } = useQuery(EXCHANGE_RATES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return data.rates.map(({ currency, rate }) => (
-    <div key={currency}>
-      <p>
-        {currency}: {rate}
-      </p>
-    </div>
-  ));
-}*/
-
-const GET_USER = gql`
-  query GetUser {
-    user(id: 1){
-      id
-      username
-      email
-    }
-  }
-`;
-
-//Test user id 1
-function GetUser() {
-  const { loading, error, data } = useQuery(GET_USER);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return (
-    <div>
-      { data.user.username }
-    </div>);
-}
-
 const GET_USERS = gql`
   query GetUsers {
     users {
@@ -82,6 +35,9 @@ function Users( query, setQuery) {
     return `Error! ${error.message}`;
   }
 
+  //return <p>{  !loading && !error && data && JSON.stringify(data) }</p>;
+
+  //When loading is false and there is no error, the query has completed. 
   if (!loading && !error && data){
     return (<Combobox hideCaret
               filter='contains'
@@ -103,19 +59,6 @@ function Users( query, setQuery) {
   } else {
     return <p>Could not fetch users!</p>
   }
-
-  //When loading is false and there is no error, the query has completed. 
-
-  //console.log(data)
-  //console.log(data.users)
-  //console.log(data.users.data)
-
-  //return data;
-  //return data.users;
-  //return data.users.data;
-  //return(<div>Users</div>); 
-
-  //return <p>{  !loading && !error && data && JSON.stringify(data) }</p>;
 }
 
 const users = [
@@ -139,15 +82,6 @@ const users = [
   });
 };*/
 
-/*function App() {
-  return (
-    <div>
-      <h2>My first Apollo app 🚀</h2>
-      <ExchangeRates />
-    </div>
-  );
-}*/
-
 function App() {
   //const { search } = window.location;
   //const query = new URLSearchParams(search).get('s');
@@ -159,9 +93,6 @@ function App() {
 
   let selectAlert = () => alert('selected');
 
-  //let fetchedUsers = Users();
-  //console.log(fetchedUsers.length);
-
   return (
       <div className="App">
         <header className="App-header">
@@ -172,11 +103,6 @@ function App() {
               query = {query}
               setQuery = {setQuery}
             />
-
-            {/* <GetUser/> */}
-
-            {/* <Users/> */}
-
         </div>
   
         </header>
