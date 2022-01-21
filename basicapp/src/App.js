@@ -44,13 +44,11 @@ function Users({ query, setQuery }) {
               dataKey='id'
               textField='username'
               value={query}
-              //defaultValue={"Bret"}
-              //defaultValue={''}
               onChange={query => setQuery(query)}
               //onSelect={alert('hi there ')}
               //onSelect={() => {alert('hi there ');}}
-              //onSelect={(query) => { alert('hi there ' + query.userName);}}
-              onSelect={SelectFunction}
+              onSelect={query => { alert('hi there ' + query.username);}}
+              //onSelect={SelectFunction}
               //onSelect={selectAlert}
               data={ data.users.data }
             />);
@@ -79,6 +77,10 @@ function App() {
               query = {query}
               setQuery = {setQuery}
             />
+        </div>
+
+        <div>
+          <UserProfile/>
         </div>
   
         </header>
