@@ -21,7 +21,7 @@ const GET_USERS = gql`
   }
 `;
 
-function Users( query, setQuery) {
+function Users({ query, setQuery }) {
   const { loading, error, data } = useQuery(GET_USERS);
 
   if (loading){
@@ -44,6 +44,8 @@ function Users( query, setQuery) {
               dataKey='id'
               textField='username'
               value={query}
+              //defaultValue={"Bret"}
+              //defaultValue={''}
               onChange={query => setQuery(query)}
               //onSelect={alert('hi there ')}
               //onSelect={() => {alert('hi there ');}}
