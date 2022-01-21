@@ -1,12 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import SearchBar from './SearchBar';
 import Combobox from "react-widgets/Combobox";
 import { useState } from 'react';
-import UserList from './UserList';
 import UserProfile from './UserProfile';
-import { Suspense } from 'react/cjs/react.production.min';
-import { BrowserRouter as Router } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
 const GET_USERS = gql`
