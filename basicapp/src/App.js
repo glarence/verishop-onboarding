@@ -24,19 +24,6 @@ const GET_USERS = gql`
 function Users({ query, setQuery }) {
   const { loading, error, data } = useQuery(GET_USERS);
 
-  if (loading){
-    console.log("Loading API call!");
-    //return <p>Loading...</p>;
-    return 'Loading...';
-  }
-  if (error){
-    console.log("Error with API call?");
-    //return <p>Error :(</p>;
-    return `Error! ${error.message}`;
-  }
-
-  //return <p>{  !loading && !error && data && JSON.stringify(data) }</p>;
-
   //When loading is false and there is no error, the query has completed. 
   if (!loading && !error && data){
     return (<Combobox
@@ -45,11 +32,10 @@ function Users({ query, setQuery }) {
               textField='username'
               value={query}
               onChange={query => setQuery(query)}
-              //onSelect={alert('hi there ')}
-              //onSelect={() => {alert('hi there ');}}
-              onSelect={query => { alert('hi there ' + query.username);}}
+              //onSelect={console.log('hi there ')}
+              //onSelect={() => {console.log('hi there ');}}
+              onSelect={query => { console.log('hi there ' + query.username);}}
               //onSelect={SelectFunction}
-              //onSelect={selectAlert}
               data={ data.users.data }
             />);
   } else {
@@ -58,14 +44,9 @@ function Users({ query, setQuery }) {
 }
 
 function App() {
-  //const { search } = window.location;
-  //const query = new URLSearchParams(search).get('s');
-  //const [searchQuery, setSearchQuery] = useState(query || '');
 
   const [query, setQuery] = useState('');
   const [selectedUser, setSelectedUser] = useState('');
-
-  let selectAlert = () => alert('selected');
 
   return (
       <div className="App">
@@ -88,24 +69,19 @@ function App() {
     );
 }
 
-//let SelectFunction = function(query) { alert('hi there ' + query.userName);}
-//let SelectFunction = function() { alert('hi there ');}
-let SelectFunction = () => { alert('hi there ');}
+//let SelectFunction = function(query) { console.log('hi there ' + query.userName);}
+//let SelectFunction = function() { console.log('hi there ');}
+let SelectFunction = () => { console.log('hi there ');}
 
 //function SelectUser(query){
 let selectUser = () => {
-  alert('hi there ');
+  console.log('hi there ');
 }
 function SelectUser(){
-  alert('hello world');
-  //alert('Selected user: ' + query.userName);
+  console.log('hello world');
+  //console.log('Selected user: ' + query.userName);
 
   //Display selected user in UserProfile
 }
-
-// function ChangeUser(query) {
-//   if(query)
-//     alert('Changed user');
-// }
 
 export default App;
