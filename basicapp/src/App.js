@@ -68,19 +68,45 @@ const GET_USERS = gql`
   }
 `;
 
-function Users() {
+function Users( query, setQuery) {
   const { loading, error, data } = useQuery(GET_USERS);
 
   if (loading){
     console.log("Loading API call!");
     //return <p>Loading...</p>;
+    return 'Loading...';
   }
   if (error){
     console.log("Error with API call?");
     //return <p>Error :(</p>;
+    return `Error! ${error.message}`;
   }
 
-  console.log(data)
+  if (!loading && !error && data){
+    return (<Combobox hideCaret
+              filter='contains'
+              dataKey='id'
+              //textField='userName'
+              textField='username'
+              value={query}
+              onChange={query => setQuery(query)}
+              //onSelect={alert('hi there ')}
+              //onSelect={() => {alert('hi there ');}}
+              //onSelect={(query) => { alert('hi there ' + query.userName);}}
+              onSelect={SelectFunction}
+              //onSelect={selectAlert}
+              //data={ users }
+              data={ data.users.data }
+              //data={ Users }
+              //data={ fetchedUsers }
+            />);
+  } else {
+    return <p>Could not fetch users!</p>
+  }
+
+  //When loading is false and there is no error, the query has completed. 
+
+  //console.log(data)
   //console.log(data.users)
   //console.log(data.users.data)
 
@@ -88,6 +114,8 @@ function Users() {
   //return data.users;
   //return data.users.data;
   //return(<div>Users</div>); 
+
+  //return <p>{  !loading && !error && data && JSON.stringify(data) }</p>;
 }
 
 const users = [
@@ -140,20 +168,9 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           
         <div>
-            <Combobox hideCaret
-              filter='contains'
-              dataKey='id'
-              textField='userName'
-              value={query}
-              onChange={query => setQuery(query)}
-              //onSelect={alert('hi there ')}
-              //onSelect={() => {alert('hi there ');}}
-              //onSelect={(query) => { alert('hi there ' + query.userName);}}
-              onSelect={SelectFunction}
-              //onSelect={selectAlert}
-              data={ users }
-              //data={ Users }
-              //data={ fetchedUsers }
+            <Users
+              query = {query}
+              setQuery = {setQuery}
             />
 
             {/* <GetUser/> */}
