@@ -6,7 +6,8 @@
 .pnp.js
 
 # Depedency directories
-node_modules/
+react-client/node_modules/
+backend/node_modules/
 
 # testing
 /coverage
