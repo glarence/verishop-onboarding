@@ -17,14 +17,18 @@ const streamURL = 'https://api.twitter.com/2/tweets/search/stream';
 // each rule can be up to 512 characters long
 
 // Edit rules as desired below
-const rules = [{
-  'value': 'dog has:images -is:retweet',
-  'tag': 'dog pictures'
-},
+const rules = [
+// {
+//   'value': 'dog has:images -is:retweet',
+//   'tag': 'dog pictures'
+// },
+// {
+//   'value': 'cat has:images -grumpy',
+//   'tag': 'cat pictures'
+// },
 {
-  'value': 'cat has:images -grumpy',
-  'tag': 'cat pictures'
-},
+  'value': 'super bowl'
+}
 ];
 
 async function getAllRules() {
